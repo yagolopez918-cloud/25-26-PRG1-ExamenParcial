@@ -224,7 +224,7 @@ if (random.nextDouble() < PROB_MANTENIMIENTO) {
 
 En la segunda parte del código, el problema que observo es que, si por ejemplo la **hora es 23**, solo habría **un mantenimiento por día**, lo cual resulta **poco realista**.  
 
-###  Propuesta de solución 
+##  Propuesta de solución 
 
 Sugiero **intercambiar ese fragmento de código** por el siguiente, de modo que exista **un rango de horas** y un **mínimo de dos mantenimientos** al día:
 

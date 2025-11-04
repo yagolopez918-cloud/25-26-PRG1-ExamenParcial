@@ -51,6 +51,10 @@ if (hayMantenimiento && hora == horaMantenimiento)
 
 ¿Qué observas en este código?
 
+Observo que este código está correcto gracias a que la variable **`hora`** es una **variable primitiva**, y la variable **`hayMantenimiento`** es de tipo **boolean**.  
+Debido a esto, el operador **`==`** puede usarse para **comparar** ambos valores.  
+De no ser así, sería necesario emplear **otro tipo de marcador de equidad**, como **`equals`**.
+
 ---
 
 ## Pregunta 3
@@ -74,6 +78,8 @@ if (hayRayo && c == columnaRayo) {
 
 ¿Qué observas en este código?
 
+Lo que veo principalmente como error en este código es que, si por ejemplo **hay un rayo** y **hay mantenimiento** en la **misma celda**, al ser el **rayo** el que se evalúa primero siempre se marcará como que **hay un rayo** en esa celda, dejando de lado si **hay mantenimiento** o no.
+
 ---
 
 ## Pregunta 4
@@ -85,6 +91,14 @@ System.out.println("Dia " + dia + " - " + hora + ":00  Consumo hora: " + consumo
 ```
 
 ¿Qué observas en este código?
+
+El problema en este código está en la **última expresión que aparece entre comillas**, ya que debería decir **"Consumo Día"** y no **"Consumo Hora"**.  
+
+Esto se debe a que posteriormente se suma la variable **`consumoDia`**, la cual **mide el consumo diario** y no el consumo por hora.  
+Por tanto, había una **incongruencia** en el texto mostrado.
+
+```java
+System.out.println("Día " + dia + " - " + hora + ":00  Consumo Día: " + consumoDia);
 
 ---
 
@@ -131,6 +145,10 @@ System.out.println(segundos + " segundos");
 ```
 
 ¿Qué observas en este código?
+
+No es un **error**, ya que el código está escrito con una **buena sintaxis**.  
+El único posible detalle sería el **nombre de las variables**, que **debería estar en mayúsculas** si fueran **variables fijas**.  
+Sin embargo, al no serlo, **el código está correcto tal como está**.
 
 ---
 
@@ -182,6 +200,36 @@ while (hora < HORAS) {
 ```
 
 ¿Qué observas en este código?
+### 1. Problema con la condición `PROB_MANTENIMIENTO`
+
+El principal problema que observo es que, si **`PROB_MANTENIMIENTO` no se cumple**, su valor por defecto es `false`.  
+En ese caso, **el código no realizaría ninguna acción**, lo cual lo haría ineficaz.  
+
+###  Propuesta de mejora
+
+Inicializar las variables **antes del bloque `if`**, garantizando valores válidos iniciales:
+
+```java
+hayMantenimiento = false;
+plantaMantenimiento = -1; 
+horaMantenimiento = -1;
+
+if (random.nextDouble() < PROB_MANTENIMIENTO) {
+    hayMantenimiento = true;
+    plantaMantenimiento = 1 + random.nextInt(PLANTAS);
+    horaMantenimiento = random.nextInt(HORAS);
+}
+
+## Problema con la generación de la hora de mantenimiento
+
+En la segunda parte del código, el problema que observo es que, si por ejemplo la **hora es 23**, solo habría **un mantenimiento por día**, lo cual resulta **poco realista**.  
+
+###  Propuesta de solución 
+
+Sugiero **intercambiar ese fragmento de código** por el siguiente, de modo que exista **un rango de horas** y un **mínimo de dos mantenimientos** al día:
+
+```java
+horaMantenimiento = random.nextInt(HORAS - 2);
 
 ---
 

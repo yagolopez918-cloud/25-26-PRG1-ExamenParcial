@@ -219,7 +219,7 @@ if (random.nextDouble() < PROB_MANTENIMIENTO) {
     plantaMantenimiento = 1 + random.nextInt(PLANTAS);
     horaMantenimiento = random.nextInt(HORAS);
 }
-
+```
 ## Problema con la generación de la hora de mantenimiento
 
 En la segunda parte del código, el problema que observo es que, si por ejemplo la **hora es 23**, solo habría **un mantenimiento por día**, lo cual resulta **poco realista**.  
